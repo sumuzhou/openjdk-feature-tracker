@@ -7,9 +7,14 @@ repositories {
 }
 
 dependencies {
-
+    implementation 'io.vavr:vavr:0.10.4'
 }
 
 application {
     mainClass = 'openjdk.feature.tracker.App'
+}
+
+compileJava   {
+    sourceCompatibility = '16'
+    targetCompatibility = '16'
 }
