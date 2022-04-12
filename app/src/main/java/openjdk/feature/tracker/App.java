@@ -12,7 +12,7 @@ public class App {
         log("and use implicit canonical constructor to create instances.\n\n");
         Circle aCircle = new Circle(origin, 1);
 
-        log("The record will generate some methods for us.\n");
+        log("The record class will have some auto-generated methods.\n");
         log("Data accessor: radius=%d\n", aCircle.radius());
         log("Hash code and equality: hashCode=%d\n", aCircle.hashCode());
         log("Well formatted string output:\n\t%s.\n", aCircle.toString());
@@ -38,9 +38,13 @@ public class App {
                 ).toString()
         );
 
-        // Interface
+        log("Record classes are declared as final implicitly, but they can implement interfaces, ");
+        log("for example we can compare two circles by implementing Comparable interface.\n");
+        log("Now we can sort list of circles: %s",
+                List.of(new Circle(origin, 2), new Circle(origin, 1)).sorted().toString()
+        );
 
-        // Annotation
+        // Annotation & Reflection
     }
 
     private static List<Circle> findCircleLargerThan(List<Circle> circles, double minArea) {

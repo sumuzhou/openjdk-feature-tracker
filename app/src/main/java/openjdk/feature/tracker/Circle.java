@@ -1,6 +1,6 @@
 package openjdk.feature.tracker;
 
-record Circle(Point center, int radius) {
+record Circle(Point center, int radius) implements Comparable<Circle> {
     Circle {
         if (radius <= 0) {
             throw new IllegalArgumentException("Radius must be greater than 0");
@@ -11,10 +11,15 @@ record Circle(Point center, int radius) {
     }
 
     int diameter() {
-        return radius * 2;
+        return this.radius * 2;
     }
 
     double area() {
-        return Math.PI * Math.pow(radius, 2);
+        return Math.PI * Math.pow(this.radius, 2);
+    }
+
+    @Override
+    public int compareTo(Circle o) {
+        return this.radius - o.radius;
     }
 }
