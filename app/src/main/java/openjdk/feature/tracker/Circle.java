@@ -1,6 +1,6 @@
 package openjdk.feature.tracker;
 
-record Circle(Point center, int radius) implements Comparable<Circle> {
+record Circle(@FieldAnno Point center, @MethodAnno int radius) implements Comparable<Circle> {
     Circle {
         if (radius <= 0) {
             throw new IllegalArgumentException("Radius must be greater than 0");

@@ -40,20 +40,54 @@ public class App {
 
         log("Record classes are declared as final implicitly, but they can implement interfaces, ");
         log("for example we can compare two circles by implementing Comparable interface.\n");
-        log("Now we can sort list of circles: %s",
+        log("Now we can sort list of circles: %s\n\n",
                 List.of(new Circle(origin, 2), new Circle(origin, 1)).sorted().toString()
         );
 
-        // Annotation & Reflection
+        log("We can add annotation to the components of the record class, ");
+        log("the annotations will also apply to accessors, fields, constructor params based on the target metadata.\n");
+        log("We can then use the Reflection API made for record class to retrieve annotation info.\n");
+        log("If we mark @FieldAnno on center, and @MethodAnno on radius, ");
+        log("the annotations on accessors would be: \n");
+        log("center(): %s\n", getAnnotationsOfAccessor(Circle.class, "center"));
+        log("radius(): %s\n", getAnnotationsOfAccessor(Circle.class, "radius"));
+        log("Annotation type should be marked with ElementType.RECORD_COMPONENT to be able to retrieved by Reflection API, ");
+        log("the annotations on component are: \n");
+        log("center: %s\n", getAnnotationsOfComponent(Circle.class, "center"));
+        log("radius: %s\n", getAnnotationsOfComponent(Circle.class, "radius"));
     }
 
     private static List<Circle> findCircleLargerThan(List<Circle> circles, double minArea) {
         record CircleArea(Circle circle, double area) {}
 
         return circles
-                .map(it -> new CircleArea(it, it.area()))
-                .filter(it -> it.area >= minArea)
-                .map(it -> it.circle);
+                .map(circle -> new CircleArea(circle, circle.area()))
+                .filter(circleArea -> circleArea.area >= minArea)
+                .map(circleArea -> circleArea.circle);
+    }
+
+    private static String getAnnotationsOfAccessor(Class<?> clazz, String componentName) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("{ ");
+        List
+                .of(clazz.getRecordComponents())
+                .filter(component -> component.getName().equals(componentName))
+                .flatMap(component -> List.of(component.getAccessor().getAnnotations()))
+                .forEach(annotation -> sb.append(annotation.toString()).append(" "));
+        sb.append("}");
+        return sb.toString();
+    }
+
+    private static String getAnnotationsOfComponent(Class<?> clazz, String componentName) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("{ ");
+        List
+                .of(clazz.getRecordComponents())
+                .filter(component -> component.getName().equals(componentName))
+                .flatMap(component -> List.of(component.getAnnotations()))
+                .forEach(annotation -> sb.append(annotation.toString()).append(" "));
+        sb.append("}");
+        return sb.toString();
     }
 
     private static void log(String message, Object ... args) {
