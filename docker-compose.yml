@@ -1,0 +1,4 @@
+services:
+  jep395:
+    image: openjdk-feature-tracker:jep395
+    build: ./16/jep395
