@@ -1,9 +1,13 @@
-package openjdk.feature.tracker;
+///usr/bin/env jbang "$0" "$@" ; exit $?
+
+//JAVA 16+
+//DEPS io.vavr:vavr:0.10.4
+//SOURCES snippet/Circle.java snippet/Point.java snippet/FieldAnno.java snippet/MethodAnno.java
 
 import io.vavr.collection.List;
 import io.vavr.control.Try;
 
-public class App {
+public class Main {
 
     public static void main(String[] args) {
         Point origin = new Point(0, 0);

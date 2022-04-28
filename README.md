@@ -26,3 +26,13 @@ Finally, if you feel comfortable with the code and don't want to run it again:
 docker-compose down <the-service-name>
 docker system prune
 ```
+
+## About JBang
+
+The project uses `JBang` as the tool to simplify the build procedure and focus on the content of the code rather than the structure of the project. To install `JBang`, the most easiest way is
+
+```shell
+curl -Ls https://sh.jbang.dev | bash -s - app setup
+```
+
+Please refer to the [documentation](https://www.jbang.dev/documentation/guide/latest/index.html) of `JBang` to get more information.
