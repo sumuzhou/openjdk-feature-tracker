@@ -1,2 +1,0 @@
-rootProject.name = 'openjdk-feature-tracker'
-include('app')

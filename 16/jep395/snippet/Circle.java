@@ -1,5 +1,3 @@
-package openjdk.feature.tracker;
-
 record Circle(@FieldAnno Point center, @MethodAnno int radius) implements Comparable<Circle> {
     Circle {
         if (radius <= 0) {
