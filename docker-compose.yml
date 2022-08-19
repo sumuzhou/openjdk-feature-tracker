@@ -5,7 +5,7 @@ services:
     image: openjdk-feature-tracker:jep394
     build: 
       context: ./16/jep394
-      dockerfile: ../../Dockerfile
+      dockerfile: ../Dockerfile
     volumes:
       - ./jbang:/app/jbang
   
@@ -13,7 +13,7 @@ services:
     image: openjdk-feature-tracker:jep395
     build: 
       context: ./16/jep395
-      dockerfile: ../../Dockerfile
+      dockerfile: ../Dockerfile
     volumes:
       - ./jbang:/app/jbang
 
@@ -21,6 +21,6 @@ services:
     image: openjdk-feature-tracker:jep409
     build: 
       context: ./17/jep409
-      dockerfile: ../../Dockerfile
+      dockerfile: ../Dockerfile
     volumes:
       - ./jbang:/app/jbang
