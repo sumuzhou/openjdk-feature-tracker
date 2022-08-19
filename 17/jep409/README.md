@@ -1,5 +1,7 @@
 # JEP 409: Sealed Classes
 
+> [Link](https://openjdk.org/jeps/409)
+
 In Java language, we can use enum to model a situation where a type can only have limited values. It's convenient and carries domain knowledge by the definition.
 
 But sometimes, we want to constrain the **SUB TYPE** of one particular type and prevent it from extending arbitrarily. We can have the following choices traditionally:

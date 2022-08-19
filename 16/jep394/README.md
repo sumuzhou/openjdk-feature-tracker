@@ -1,5 +1,7 @@
 # JEP 394: Pattern Matching for instanceof
 
+> [Link](https://openjdk.org/jeps/394)
+
 As a Java developer, I believe you have seen the following boilerplate code many times:
 
 ```java
