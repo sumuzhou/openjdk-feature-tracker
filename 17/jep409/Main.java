@@ -4,6 +4,10 @@
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello JEP409");
+        log("Hello JEP409");
+    }
+
+    private static void log(String message, Object ... args) {
+        System.out.printf(message, args);
     }
 }
