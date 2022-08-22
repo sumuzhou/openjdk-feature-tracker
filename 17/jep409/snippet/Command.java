@@ -1,3 +1,4 @@
-public sealed interface Command permits SuperUserCommand, PrivilegeCommand, NormalCommand {
-    void executeMe();
+public sealed abstract class Command 
+permits SuperUserCommand, PrivilegeCommand, NormalCommand {
+    public abstract void executeMe();
 }
