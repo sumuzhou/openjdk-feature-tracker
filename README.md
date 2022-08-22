@@ -8,19 +8,13 @@ What is the best way for a developer to learn some stuff? `Talk is cheap, show m
 
 It's a little difficult for us to run the code on bare-metal machine directly because we need to switch back and forth on different versions of JDK and Gradle, so we seek for the help for containers.
 
-You need to have `docker` and `docker-compose` (or any tools that compatible with them) installed on your machine, and build the image you want to run by:
+You need to have `docker` and `docker-compose` (or any tools that compatible with them) installed on your machine, and run the code by:
 
 ```shell
-docker-compose build <the-service-name>
+docker-compose up --build <the-service-name>
 ```
 
-Then run the code by:
-
-```shell
-docker-compose run <the-service-name>
-```
-
-Finally, if you feel comfortable with the code and don't want to run it again:
+If you feel comfortable with the code later and don't want to run it again:
 
 ```shell
 docker-compose down <the-service-name>

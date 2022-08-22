@@ -2,7 +2,7 @@
 
 //JAVA 16+
 //DEPS io.vavr:vavr:0.10.4
-//SOURCES snippet/Circle.java snippet/Point.java snippet/FieldAnno.java snippet/MethodAnno.java
+//SOURCES snippet/*.java
 
 import io.vavr.collection.List;
 import io.vavr.control.Try;
