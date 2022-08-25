@@ -1,6 +1,14 @@
 version: '3.9'
 
 services:
+  jep361:
+    image: openjdk-feature-tracker:jep361
+    build: 
+      context: ./14/jep361
+      dockerfile: ../Dockerfile
+    volumes:
+      - ./jbang:/app/jbang
+
   jep394:
     image: openjdk-feature-tracker:jep394
     build: 
