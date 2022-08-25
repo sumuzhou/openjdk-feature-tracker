@@ -8,7 +8,16 @@ public class Main {
         var day = Workday.FRIDAY;
         
         log("> statementWithColon\n");
-        log("My feelings of Friday is: %s\n", statementWithColon(day));
+        log("I can't feel the Friday: %s\n\n", statementWithColon(day));
+
+        log("> statementWithArrow\n");
+        log("I can't feel the Friday: %s\n\n", statementWithArrow(day));
+
+        log("> expressionWithArrow\n");
+        log("My feeling of Friday is: %s\n\n", expressionWithArrow(day));
+
+        log("Last but not least, we can't use flow-jumping keywords in the switch expressions, such as `continue` and `break`, ");
+        log("because they will yield nothing which break the syntax of assignment.\n");
     }
 
     private static void log(String message, Object ... args) {
@@ -20,10 +29,8 @@ public class Main {
         var emoji = "🙃";
         switch (workday) {
             case MONDAY:
-                emoji = "😩";
-                break;
             case TUESDAY:
-                emoji = "🥱";
+                emoji = "😩";
                 break;
             case WEDNESDAY:
                 emoji = "🙄";
@@ -37,14 +44,28 @@ public class Main {
     }
 
     private static String statementWithArrow(Workday workday) {
-        return "";
-    }
-
-    private static String expressionWithColon(Workday workday) {
-        return "";
+        log("The right arrow is the new form of switch label, you can omit the break keyword.\n");
+        var emoji = "🙃";
+        switch (workday) {
+            case MONDAY, TUESDAY -> emoji = "😩";
+            case WEDNESDAY -> emoji = "🙄";
+            case THURSDAY -> emoji = "😏";
+        };
+        log("Again, there's no alert thrown if you forget the happy Friday.\n");
+        return emoji;
     }
 
     private static String expressionWithArrow(Workday workday) {
-        return "";
+        log("We can even use the new form of switch as an expression, which means it can be used in assignment directly.\n");
+        log("The compiler will complain now if the exhaustiveness isn't carefully considered.\n");
+        log("And we can use yield **identifier** (not a keyword) to generate a value by a code block.\n");
+        return switch (workday) {
+            case MONDAY, TUESDAY -> "😩";
+            case WEDNESDAY -> "🙄";
+            case THURSDAY -> "😏";
+            case FRIDAY -> {
+                yield "🥳";
+            }
+        };
     }
 }
